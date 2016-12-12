@@ -38,21 +38,6 @@ bakwht='\e[47m'   # White
 
 txtrst='\e[0m'    # Text Reset
 
-# Setting PATH for Python 3.4
-# The orginal version is savein .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${PATH}"
-PATH="${PATH}:/usr/local/mysql/bin:~/bin"
-PATH="${PATH}:/Library/Gradle/bin"
-PATH="${PATH}:/Applications/Postgres.app/Contents/Versions/9.4/bin"
-
-export PATH
-
-code() { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
-
-export JUNIT_HOME=/Library/JUnit
-export JDBC_HOME=/Library/JDBC
-export CLASSPATH=$CLASSPATH:$JUNIT_HOME/junit.jar:$JUNIT_HOME/hamcrest-core.jar:$JDBC_HOME/mysql-connector-java-5.1.37-bin.jar:
-
 print_before_the_prompt() {
     printf "\n $txtred%s: $bldgrn%s\n$txtrst" "$USER" "$PWD"
 }
@@ -63,5 +48,6 @@ PS1='-> '
 
 alias ls='ls -GFh'
 alias grep='grep --color'
-
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+alias ...='../..'
+alias ....='../../../'
+alias .....='../../../..'
