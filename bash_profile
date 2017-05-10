@@ -1,5 +1,4 @@
 # COLORS
-
 txtblk='\e[0;30m' # Black - Regular
 txtred='\e[0;31m' # Red
 txtgrn='\e[0;32m' # Green
@@ -38,16 +37,50 @@ bakwht='\e[47m'   # White
 
 txtrst='\e[0m'    # Text Reset
 
-print_before_the_prompt() {
-    printf "\n $txtred%s: $bldgrn%s\n$txtrst" "$USER" "$PWD"
+find_git_branch() {
+    local branch
+    if branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null); then
+        if [[ "$branch" == "HEAD" ]]; then
+            branch='detached*'
+        fi
+        git_branch="($branch)"
+    else
+        git_branch=""
+    fi
 }
 
-PROMPT_COMMAND=print_before_the_prompt
+find_git_dirty() {
+    local status=$(git status --porcelain 2> /dev/null)
+    if [[ "$status" != "" ]]; then
+        git_dirty='*'
+    else
+        git_dirty=''
+    fi
+}
+
+prompt_command() {
+    find_git_branch;
+    find_git_dirty;
+    printf "\n $txtred%s: $txtgrn%s $txtylw%s $txtwht%s\n$txtrst" "$USER" "$PWD" "$git_branch" "$git_dirty"
+}
+
+
+PROMPT_COMMAND=prompt_command
 
 PS1='-> '
 
+alias l='ls'
+alias sl='ls'
 alias ls='ls -GFh'
 alias grep='grep --color'
-alias ...='../..'
-alias ....='../../../'
-alias .....='../../../..'
+alias tmux="TERM=screen-256color-bce tmux"
+
+# Lets use python3 by default
+alias python='python3'
+alias pip='pip3'
+
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+fortune | cowsay
