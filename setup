@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Copy over configuration files
+cp vimrc ~/.vimrc
+cp bash_profile ~/.bash_profile
 
 # Setup vim folders and copy over vim colorscheme
 mkdir -p ~/.vim/bundle
