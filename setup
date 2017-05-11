@@ -1,4 +1,11 @@
 #!/bin/bash
 
+
+# Setup vim folders and copy over vim colorscheme
+mkdir -p ~/.vim/bundle
+mkdir ~/.vim/colors
+cp solarized.vim ~/.vim/colors/
+
+# Install vundle and all needed plugins
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
 vim +PluginInstall +qall
