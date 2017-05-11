@@ -149,7 +149,6 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore = ['tmp', 'pkg']
 
 " CtrlP
-let g:ctrlp_map='T'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " vim-jsx
