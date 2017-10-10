@@ -74,6 +74,7 @@ alias sl='ls'
 alias ls='ls -GFh'
 alias grep='grep --color'
 alias tmux="TERM=screen-256color-bce tmux"
+alias sublime="open -a Sublime"
 
 # Lets use python3 by default
 alias python='python3'

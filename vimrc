@@ -19,7 +19,6 @@ set backspace=indent,eol,start      " backspace behaves as it should
 set shiftwidth=4                    " tabs are 4 spaces
 set autoindent                      " autoindent code
 set scrolloff=5                     " keep 5 lines when scrolling
-set textwidth=82
 set tabpagemax=8                    " maximum of 8 tabs open at once
 
 autocmd Filetype javascript setlocal ts=2 sw=2 sts=0
@@ -108,14 +107,6 @@ inoremap jk <esc>
 if &compatible
   set nocompatible
 endif
-
-set rtp+=~/.vim/bundle/neobundle.vim/
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'toyamarinyon/vim-swift'
-
-call neobundle#end()
 
 " Set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/vundle
